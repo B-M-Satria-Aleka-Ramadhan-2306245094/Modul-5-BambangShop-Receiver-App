@@ -5,4 +5,5 @@ use rocket::serde::{Deserialize, Serialize};
 pub struct SubscriberRequest {
     pub url: String,
     pub name: String,
+    
 }
