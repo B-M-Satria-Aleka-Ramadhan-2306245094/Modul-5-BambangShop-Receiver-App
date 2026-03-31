@@ -84,5 +84,8 @@ This is the place for you to write reflections:
 ### Mandatory (Subscriber) Reflections
 
 #### Reflection Subscriber-1
+1. Penggunaan RwLock<> diperlukan karena data Vec<Notification> dapat diakses oleh banyak thread secara bersamaan. RwLock memungkinkan banyak thread membaca data secara bersamaan (read concurrency), namun tetap menjaga keamanan saat ada thread yang menulis. Dibandingkan Mutex<> yang hanya mengizinkan satu thread mengakses data (baik read maupun write), RwLock lebih efisien untuk kasus ini karena operasi read lebih sering terjadi.
+
+2. Rust tidak mengizinkan mutasi langsung pada variabel static seperti di Java karena alasan keamanan, khususnya untuk mencegah data race dalam lingkungan concurrent. Oleh karena itu, Rust mengharuskan penggunaan wrapper seperti RwLock atau Mutex untuk memastikan akses yang aman terhadap data static. Library lazy_static digunakan untuk menginisialisasi static variable secara runtime dengan cara yang tetap aman dan terkontrol.
 
 #### Reflection Subscriber-2
