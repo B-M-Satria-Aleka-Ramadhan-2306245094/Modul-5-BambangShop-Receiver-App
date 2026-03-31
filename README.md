@@ -89,3 +89,8 @@ This is the place for you to write reflections:
 2. Rust tidak mengizinkan mutasi langsung pada variabel static seperti di Java karena alasan keamanan, khususnya untuk mencegah data race dalam lingkungan concurrent. Oleh karena itu, Rust mengharuskan penggunaan wrapper seperti RwLock atau Mutex untuk memastikan akses yang aman terhadap data static. Library lazy_static digunakan untuk menginisialisasi static variable secara runtime dengan cara yang tetap aman dan terkontrol.
 
 #### Reflection Subscriber-2
+1. Saya sempat melihat beberapa bagian lain seperti src/lib.rs untuk memahami bagaimana konfigurasi seperti APP_CONFIG dan REQUEST_CLIENT diatur. Dari situ saya belajar bahwa Rust memisahkan konfigurasi global dan utility agar dapat digunakan di berbagai module tanpa duplikasi kode. Hal ini membantu menjaga struktur kode tetap rapi dan modular.
+
+2. Observer pattern sangat memudahkan penambahan subscriber karena publisher tidak perlu mengetahui detail setiap subscriber, cukup menyimpan daftar dan mengirim notifikasi ke semuanya. Saat menambah instance Receiver, sistem tetap berjalan tanpa perubahan pada publisher. Namun, jika menambah lebih dari satu instance Main app, akan menjadi lebih kompleks karena bisa terjadi duplikasi publisher dan sinkronisasi data antar publisher perlu diatur.
+
+3. Saya mencoba menggunakan Postman untuk menguji endpoint dan membuat collection agar lebih terstruktur. Fitur seperti grouping request dan penyimpanan endpoint sangat membantu dalam pengujian berulang. Selain itu, dokumentasi di Postman juga mempermudah memahami alur API, sehingga sangat berguna baik untuk tugas ini maupun untuk pengembangan proyek ke depannya.
